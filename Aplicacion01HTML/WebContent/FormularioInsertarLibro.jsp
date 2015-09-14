@@ -7,31 +7,33 @@ font-weigth:bold;
 </style>
 <script type="text/javascript">
 function validacion() {
-if (document.forms[0].isbn.value == "")
-alert("datos no validos");
-else
-document.forms[0].submit();
+	var isbn= document.getElementById("isbn");
+	var miformulario=document.getElementById("miformulario");
+	if(isbn.value==""){
+	alert("datos no validos");
+	return false;
+	}else{
+	miformulario.submit();
+	}
 }
 </script>
 <title>Formulario Libro</title>
 </head>
 <body>
-<form >
+<form action="InsertarLibro.jsp" onsubmit="return validacion();" >
 <fieldset>
 <legend>Formulario alta libro</legend>
 <p><label for="isbn">ISBN:</label>
-<input type="text" name="isbn"/>
-</p>
+<input id="isbn" type="text" name="isbn"/></p>
 <p>
 <label for="titulo">Titulo:</label>
-<input type="text" name= "titulo"/>
-</p>
-<p>
+<input id="titulo" type="text" name= "titulo"/>
+</p><p>
 <label for="categoria">Categoria :</label>
-<input type="text" name="categoria"/>
+<input id="categoria" type="text" name="categoria"/>
 </p>
 <p>
-<input type="button" value="Insertar" onclick="validacion()"/>
+<input type="submit" value="Insertar" />
 </p>
 </fieldset></form>
 </body>
