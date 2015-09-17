@@ -36,34 +36,34 @@ public class Libro {
 		this.categoria = categoria;
 	}	
 
-	public void insertar() {
+	public void insertar() throws DataBaseException {
 		String consultaSQL = "insert into Libros (isbn,titulo,categoria) values ";
 		consultaSQL += "('" + this.isbn + "','" + this.titulo + "','" + this.categoria + "')";
 		DataBaseHelper<Object> helper = new DataBaseHelper<Object>();
 		helper.modificarRegistro(consultaSQL);
 	}	
 	
-	public static List<Libro> buscarTodos() {
-		String consultaSQL = "select isbn,titulo,categoria from Libros";
+	public static List<Libro> buscarTodos() throws DataBaseException {
+		String consultaSQL = "select isb,titulo,categoria from Libros";
 		DataBaseHelper<Libro> helper = new DataBaseHelper<Libro>();
 		List<Libro> listaDeLibros = helper.seleccionarRegistros(consultaSQL,Libro.class);
 		return listaDeLibros;
 	}
 	
-	public static List<String> buscarTodasLasCategorias() {
+	public static List<String> buscarTodasLasCategorias() throws DataBaseException {
 		String consultaSQL = "select distinct(categoria) as categoria from Libros";
 		DataBaseHelper<String> helper = new DataBaseHelper<String>();
 		List<String>listaDeCategorias = helper.seleccionarRegistros(consultaSQL,String.class);
 		return listaDeCategorias;
 	}
 	
-	public void borrar() {
+	public void borrar() throws DataBaseException {
 		String consultaSQL = "delete from Libros where isbn='"+ this.isbn+"'";
 		DataBaseHelper<Libro> helper = new DataBaseHelper<Libro>();
 		helper.modificarRegistro(consultaSQL);
 	}
 	
-	public static Libro buscarPorClave (String isbn) {
+	public static Libro buscarPorClave (String isbn) throws DataBaseException {
 		String consultaSQL = "select isbn,titulo,categoria from Libros where isbn='"+ isbn+"'";
 		DataBaseHelper<Libro> helper = new DataBaseHelper<Libro>();
 		List<Libro> listaDeLibros =
@@ -71,13 +71,13 @@ public class Libro {
 		return listaDeLibros.get(0);
 	}
 	
-	public void salvar() {
+	public void salvar() throws DataBaseException {
 		String consultaSQL = "update Libros set titulo='"+ this.titulo+"',	categoria='"+ categoria+"' where isbn='"+ isbn+"'";
 		DataBaseHelper<Libro> helper = new DataBaseHelper<Libro>();
 		helper.modificarRegistro(consultaSQL);
 	}
 	
-	public static List<Libro> buscarPorCategoria (String categoria) {
+	public static List<Libro> buscarPorCategoria (String categoria) throws DataBaseException {
 		String consultaSQL = "select isbn,titulo,categoria from Libros where categoria='"+ categoria+"'";
 		DataBaseHelper<Libro> helper = new DataBaseHelper<Libro>();
 		List<Libro> listaDeLibros = helper.

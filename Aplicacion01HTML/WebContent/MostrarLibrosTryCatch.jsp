@@ -15,16 +15,21 @@
 	<form id="formularioFiltrar" action="MostrarLibros.jsp">
 		<select name="categoria">
 		<option value="seleccionar">seleccionar</option>
-		<%	List<String> listaDeCategorias=null;
-			listaDeCategorias=Libro.buscarTodasLasCategorias();
-			for(String categoria:listaDeCategorias) { %>
+		<%  try {
+				List<String> listaDeCategorias=null;
+				listaDeCategorias=Libro.buscarTodasLasCategorias();
+				for(String categoria:listaDeCategorias) { %>
 		<option value="<%=categoria%>"><%=categoria%></option>
-		<%	}%>
+		<%}%>
 		</select>		
+		<%}catch(DataBaseException e) {
+		out.println("</select>"+e.getMessage()+"");
+		}%>
 		<input type="submit" value="Filtrar" />		   	
    	</form>	
 	<br/>	
-		<%		
+		<%
+		try{
 		List<Libro> listaDeLibros=null;
 		if (request.getParameter("categoria")==null || request.getParameter("categoria").equals("seleccionar")) {
 			listaDeLibros=Libro.buscarTodos();
@@ -37,7 +42,11 @@
 			<a href="BorrarLibro.jsp?isbn=<%=libro.getIsbn()%>">Borrar</a>
 			<a href="FormularioEditarLibro.jsp?isbn=<%=libro.getIsbn()%>">Editar</a>
 	<br/>
-		<% }		
+		<% }
+		}catch(DataBaseException e){
+			out.println(e.getMessage()+": ");
+			out.println(e.getCause().getMessage());
+		}
 		%>
 	<a href="FormularioInsertarLibro.jsp">Insertar Libro</a>
 </body>

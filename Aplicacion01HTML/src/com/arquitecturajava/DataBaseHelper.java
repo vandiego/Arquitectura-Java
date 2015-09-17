@@ -29,8 +29,10 @@ public class DataBaseHelper <T> {
 			filasAfectadas = sentencia.executeUpdate(consultaSQL);
 		} catch (ClassNotFoundException e) {
 			System.out.println("Error driver" + e.getMessage());
+			throw new DataBaseException("Clase no encontrada");
 		} catch (SQLException e) {
 			System.out.println("Error de SQL" + e.getMessage());
+			throw new DataBaseException("Error de SQL");
 		} finally {
 			if (sentencia != null) {
 				try {sentencia.close();} catch (SQLException e) {}
@@ -67,8 +69,10 @@ public class DataBaseHelper <T> {
 			}
 		} catch (ClassNotFoundException e) {
 			System.out.println("SELECTION: no se ha podido cargar el driver "+ e.getMessage());
+			throw new DataBaseException("Clase no encontrada",e);
 		} catch (SQLException e) {
-			System.out.println("SELECTION: no se ha podido acceder a la bbdd "+ e.getMessage());
+			System.out.println("SELECTION: no se ha podido acceder a la bd "+ e.getMessage());
+			throw new DataBaseException("Error de SQL",e);
 		} catch (IllegalArgumentException e) {
 			System.out.println("REFLECTION: " + e.getMessage());
 			e.printStackTrace();
