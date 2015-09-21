@@ -44,7 +44,7 @@ public class Libro {
 	}	
 	
 	public static List<Libro> buscarTodos() throws DataBaseException {
-		String consultaSQL = "select isb,titulo,categoria from Libros";
+		String consultaSQL = "select isbn,titulo,categoria from Libros";
 		DataBaseHelper<Libro> helper = new DataBaseHelper<Libro>();
 		List<Libro> listaDeLibros = helper.seleccionarRegistros(consultaSQL,Libro.class);
 		return listaDeLibros;
