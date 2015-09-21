@@ -1,3 +1,5 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <%@ page import="java.sql.ResultSet"%>
 <%@ page import="java.sql.SQLException"%>
 <%@page import="com.arquitecturajava.aplicacion.DataBaseHelper"%>
@@ -24,12 +26,9 @@
 </p><p>
 <label for="categoria">Categoria:</label>
 <select name="categoria">
-	<%  List<String> listaDeCategorias=null;
-		listaDeCategorias=Libro.buscarTodasLasCategorias();
-		for(String categoria:listaDeCategorias) { %>
-	<option value="<%=categoria%>"><%=categoria%></option>
-		<% } %>	
-	</select>
+	<c:forEach var="categoria" items="${listaDeCategorias}">
+		<option value="${categoria}">${categoria}</option>
+	</c:forEach>
 <br/>
 </p>
 <p>
