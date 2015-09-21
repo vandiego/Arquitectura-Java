@@ -1,7 +1,7 @@
 <%@ page import="java.sql.ResultSet"%>
 <%@ page import="java.sql.SQLException"%>
-<%@page import="com.arquitecturajava.DataBaseHelper"%>
-<%@page import="com.arquitecturajava.Libro"%>
+<%@page import="com.arquitecturajava.aplicacion.DataBaseHelper"%>
+<%@page import="com.arquitecturajava.aplicacion.Libro"%>
 <%@page import="java.util.List"%>
 
 <?xml version="1.0" encoding="UTF-8"?>
@@ -13,7 +13,7 @@
 <title>Formulario Libro</title>
 </head>
 <body>
-<form action="InsertarLibro.jsp" onsubmit="return validacion();" >
+<form action="InsertarLibro.do" onsubmit="return validacion();" >
 <fieldset>
 <legend>Formulario alta libro</legend>
 <p><label for="isbn">ISBN:</label>

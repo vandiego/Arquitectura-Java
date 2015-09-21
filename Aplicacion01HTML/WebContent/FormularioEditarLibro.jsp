@@ -1,5 +1,5 @@
 <%@ page import="java.util.List" %>
-<%@page import="com.arquitecturajava.Libro"%>
+<%@page import="com.arquitecturajava.aplicacion.Libro"%>
 <%Libro libro= Libro.buscarPorClave(request.getParameter("isbn"));%>
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
@@ -10,7 +10,7 @@
 		<title>Formulario Libro</title>
 	</head>
 	<body>
-		<form id="formularioEdicion" action="SalvarLibro.jsp">
+		<form id="formularioEdicion" action="SalvarLibro.do">
 		<fieldset>
 		<legend>Formulario editar libro</legend>
 		<p><label for="isbn">ISBN:</label>

@@ -1,4 +1,4 @@
-package com.arquitecturajava;
+package com.arquitecturajava.aplicacion;
 
 
 import java.lang.reflect.InvocationTargetException;
