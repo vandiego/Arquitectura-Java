@@ -11,7 +11,7 @@
 		<title>Formulario Libro</title>
 	</head>
 	<body>
-		<form id="formularioEdicion" action="SalvarLibro.do">
+		<form id="formularioEdicion" action="ModificarLibro.do">
 		<fieldset>
 		<legend>Formulario editar libro</legend>
 		<p><label for="isbn">ISBN:</label>
